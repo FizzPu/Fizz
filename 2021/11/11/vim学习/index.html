@@ -140,17 +140,15 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vim%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">vim基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vim%E8%BF%9B%E9%98%B6%E7%AF%87"><span class="toc-text">Vim进阶篇</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vim%E6%8F%92%E4%BB%B6%E7%AF%87"><span class="toc-text">Vim插件篇</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vim%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">vim基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vim%E8%BF%9B%E9%98%B6%E7%AF%87"><span class="toc-text">Vim进阶篇</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vim%E6%8F%92%E4%BB%B6"><span class="toc-text">Vim插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
     </div>
-  </div><div class="post-content"><h3 id="vim基本操作"><a href="#vim基本操作" class="headerlink" title="vim基本操作"></a>vim基本操作</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Insert 模式：</span><br><span class="line">a: 光标后面写入，进行append操作</span><br><span class="line"></span><br><span class="line">i:  光标前面插入</span><br><span class="line"></span><br><span class="line">o: 另起一行</span><br><span class="line"></span><br><span class="line">A: 行的末尾进行插入</span><br><span class="line"></span><br><span class="line">I:  行的首部进行插入</span><br><span class="line"></span><br><span class="line">O:在上一行另起一行</span><br><span class="line"></span><br><span class="line">gi: 进入上一次插入的地方</span><br><span class="line"></span><br><span class="line">ctrl + H: 删除上一个字符</span><br><span class="line">ctrl + w: 上一个单词</span><br><span class="line">ctrl + u : 删除这一行</span><br><span class="line">终端中也可以实现</span><br><span class="line"></span><br><span class="line">ctrl + [ : 进入normal</span><br><span class="line">ctrl + C : 禁止向终端输入,防止误触，ctrl + q解除</span><br></pre></td></tr></table></figure>
+  </div><div class="post-content"><h3 id="vim基本操作"><a href="#vim基本操作" class="headerlink" title="vim基本操作"></a>vim基本操作</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Insert 模式：</span><br><span class="line">a: 光标后面写入，进行append操作</span><br><span class="line"></span><br><span class="line">i:  光标前面插入</span><br><span class="line"></span><br><span class="line">o: 另起一行</span><br><span class="line"></span><br><span class="line">A: 行的末尾进行插入</span><br><span class="line"></span><br><span class="line">I:  行的首部进行插入</span><br><span class="line"></span><br><span class="line">O:在上一行另起一行</span><br><span class="line"></span><br><span class="line">gi: 进入上一次插入的地方</span><br><span class="line"></span><br><span class="line">ctrl + H: 删除上一个字符</span><br><span class="line">ctrl + w: 上一个单词</span><br><span class="line">ctrl + u : 删除这一行</span><br><span class="line">终端中也可以实现</span><br><span class="line"></span><br><span class="line">ctrl + [ : 进入normal</span><br><span class="line">ctrl + C : 禁止向终端输入,防止误触，ctrl + q解除</span><br><span class="line">w!! 强制写入,相当于sudo</span><br></pre></td></tr></table></figure>
 
 
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">normal模式</span><br><span class="line">j下k上h左l右</span><br><span class="line">w: 下一个word开头</span><br><span class="line">e: 下一个word结尾</span><br><span class="line">b: 上一个word开头</span><br><span class="line">f&lt;ch&gt;: 跳转到行中ch开头的word, ；跳到下一次</span><br><span class="line">0: 移动到一行的行首部。$移动到行尾部</span><br><span class="line">g: 文件的开头</span><br><span class="line">G: 文件的末尾</span><br><span class="line">ctrl + f: 向下翻页</span><br><span class="line">ctrl + u : 向上操作</span><br><span class="line">zz : 当前行放在中间</span><br><span class="line">x : 删除光标所在的字符</span><br><span class="line">daw: 删除单词，包含空格</span><br><span class="line">dd: 删除当前行</span><br><span class="line">d2 : 删除2行</span><br><span class="line">r: 替换一个字符ra</span><br><span class="line">s:删除并进入插入模式</span><br><span class="line">caw: 删除当前单词，并进入插入模式</span><br><span class="line">ct&lt;ch&gt; 一直删除到ch，并进入插入模式</span><br><span class="line">/: 前向搜索 , n: 下一个匹配</span><br><span class="line">?: 反向搜索</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">normal模式</span><br><span class="line">j下k上h左l右</span><br><span class="line">w: 下一个word开头</span><br><span class="line">e: 下一个word结尾</span><br><span class="line">b: 上一个word开头</span><br><span class="line">f&lt;ch&gt;: 跳转到行中ch开头的word, ；跳到下一次</span><br><span class="line">0: 移动到一行的行首部。$移动到行尾部</span><br><span class="line">g: 文件的开头</span><br><span class="line">G: 文件的末尾</span><br><span class="line">ctrl + f: 向下翻页</span><br><span class="line">ctrl + u : 向上操作</span><br><span class="line">zz : 当前行放在中间</span><br><span class="line">x : 删除光标所在的字符</span><br><span class="line">daw: 删除单词，包含空格</span><br><span class="line">dd: 删除当前行</span><br><span class="line">d2 : 删除2行</span><br><span class="line">r: 替换一个字符ra</span><br><span class="line">s:删除并进入插入模式</span><br><span class="line">caw: 删除当前单词，并进入插入模式</span><br><span class="line">ct&lt;ch&gt; 一直删除到ch，并进入插入模式</span><br><span class="line">/: 前向搜索 , n: 下一个匹配</span><br><span class="line">?: 反向搜索</span><br><span class="line"></span><br><span class="line">​```</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Visual 模式： </span><br><span class="line">v: 进入普通模式</span><br><span class="line">V ：选中当前这一行</span><br><span class="line">ctrl + v: 进行块状选择  </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​```shell</span><br><span class="line">Visual 模式： </span><br><span class="line">v: 进入普通模式</span><br><span class="line">V ：选中当前这一行</span><br><span class="line">ctrl + v: 进行块状选择  </span><br></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">替换</span><br><span class="line">:10-120 s/单词或者正则/替换后的单词/g 替换10行到120行</span><br><span class="line">:% s/s/单词或者正则/替换后的单词/g 对所有文本进行替换</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -164,101 +162,22 @@
 <h3 id="Vim进阶篇"><a href="#Vim进阶篇" class="headerlink" title="Vim进阶篇"></a>Vim进阶篇</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim宏操作</span><br><span class="line">一系列命令的集合</span><br><span class="line">使用q来录制,保存命令在寄存器。q a</span><br><span class="line">@a 来回放</span><br><span class="line">然后全选，在visual模式下执行normal模式下的命令 normal @a</span><br></pre></td></tr></table></figure>
 
 <p>Demo: 快速给每一行加上””</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol>
+<li>Normal模式下按下q a(将存放在寄存器a中), 开始录制宏</li>
+<li>将某一行加上””，这个操作一定要具有普遍性。如按下I, 光标放到行首，添加”, 按下Esc, 按下A, 光标移动到末尾，按下”</li>
+<li>按下q,结束录制</li>
+<li>将宏用于所有的行，在Visual模式下，选中所有的行。按下:normal @a执行Normal模式下的命令@A, 回放宏</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">快捷键非递归映射</span><br><span class="line">基本映射</span><br><span class="line">nnoremap &lt;space&gt; viw</span><br><span class="line">vnoremap visual的映射</span><br><span class="line">inoremap 插入模式下的映射</span><br><span class="line"></span><br><span class="line">&lt;c-d&gt; 表示ctrl + d</span><br><span class="line">&lt;space&gt; 表示空格</span><br><span class="line">&lt;Esc&gt; 表示Esc</span><br><span class="line">u: 转化为小写，U：转化为大写</span><br><span class="line">insert 模式 ctrl + d 映射为删除一行</span><br><span class="line">inoremap &lt;c-d&gt; &lt;Esc&gt;ddi</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">快捷键映射</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Vim插件"><a href="#Vim插件" class="headerlink" title="Vim插件"></a>Vim插件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vim-plug 管理插件</span><br><span class="line">将github去掉域名的剩下部分放到.vimrc文件中</span><br><span class="line">保存文件，接着source .~/vimrc</span><br><span class="line">PlugInstall 进行插件的安装</span><br><span class="line">删除vimrc对应内容后，PlugClear 进行插件的删除</span><br><span class="line"></span><br><span class="line">VimAweSome上寻找自己感兴趣的插件</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h3 id="Vim插件篇"><a href="#Vim插件篇" class="headerlink" title="Vim插件篇"></a>Vim插件篇</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">插件</span><br><span class="line">使用vim-plug 插件进行管理</span><br><span class="line">PluginInstall </span><br><span class="line">PluginClean</span><br><span class="line">可以在VIMAwesome上寻找想要的插件</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">配置字体</span><br><span class="line">Fira Code</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">文件跳转</span><br><span class="line">nedtree </span><br><span class="line">NERDtreeclose 关闭</span><br><span class="line">ctrlp 模糊搜索</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">文件位置移动</span><br><span class="line">easymotion</span><br><span class="line">nmap ss &lt;Plug&gt;(easymotion-s2)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.imooc.com/video/19460">https://www.imooc.com/video/19460</a> PegasusWang</p>
+<p>  &lt;&lt;笨法学VimScript&gt;&gt;</p>
+</blockquote>
 
       </div>
       
