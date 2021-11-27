@@ -13,8 +13,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="天下有大勇者，卒然临之而不惊，无故加之而不怒"/><meta name="keywords" content="程序员" /><link rel="alternate" href="/atom.xml" title="FizzPu" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
-<link rel="canonical" href="http://example.com/"/>
+<meta name="description" content="网络编程1"/><meta name="keywords" content="程序员" /><link rel="alternate" href="/atom.xml" title="FizzPu" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://example.com/2021/11/25/网络编程1/"/>
 
 <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
     MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
@@ -54,7 +54,7 @@
   window.config = {"leancloud":{"app_id":"nsM8V2SGS5yFvbIMBDvU59ns-gzGzoHsz","app_key":"mT7ruxEfeekIeYpGvLyzrqdy"},"toc":true,"fancybox":true,"pjax":"","latex":true};
 </script>
 
-    <title>FizzPu</title>
+    <title>网络编程1 - FizzPu</title>
   <meta name="generator" content="Hexo 5.4.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -121,91 +121,55 @@
 
       <main id="main" class="main">
         <div class="content-wrapper">
-          <div id="content" class="content"><section id="posts" class="posts"><section id="archive" class="archive"><div class="collection-title">
-            <h2 class="archive-year">2021</h2>
-          </div>
-        <div class="archive-post">
-        <span class="archive-post-time">
-          11-27
-          </span>
-        <span class="archive-post-title">
-          <a href="/2021/11/27/%E6%9C%AC%E5%9C%B0%E5%A5%97%E6%8E%A5%E5%AD%97/" class="archive-post-link">
-            本地套接字
-          </a>
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">网络编程1
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-11-25
+        </span><span class="post-visits"
+             data-url="/2021/11/25/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B1/"
+             data-title="网络编程1">
+          Visits 0
         </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://static001.geekbang.org/resource/image/0b/64/0ba3f3d04b1466262c02d6f24ee76a64.jpg" alt="img"></p>
+<p><img src="https://static001.geekbang.org/resource/image/65/29/65cef2c44480910871a0b66cac1d5529.png" alt="img"></p>
+<p>服务器端通过 socket，bind 和 listen 完成了被动套接字的准备工作，被动的意思就是等着别人来连接，然后调用 accept，就会阻塞在这里，等待客户端的连接来临；客户端通过调用 socket 和 connect 函数之后，也会阻塞。接下来的事情是由操作系统内核完成的，更具体一点的说，是操作系统内核网络协议栈在工作。</p>
+<p>下面是具体的过程：</p>
+<ol>
+<li>客户端的协议栈向服务器端发送了 SYN 包，并告诉服务器端当前发送序列号 j，客户端进入 SYNC_SENT 状态；</li>
+<li>服务器端的协议栈收到这个包之后，和客户端进行 ACK 应答，应答的值为 j+1，表示对 SYN 包 j 的确认，同时服务器也发送一个 SYN 包，告诉客户端当前我的发送序列号为 k，服务器端进入 SYNC_RCVD 状态；</li>
+<li>客户端协议栈收到 ACK 之后，<strong>使得应用程序从 connect 调用返回</strong>，表示客户端到服务器端的单向连接建立成功，客户端的状态为 ESTABLISHED，同时客户端协议栈也会对服务器端的 SYN 包进行应答，应答数据为 k+1；</li>
+<li>应答包到达服务器端后，服务器端协议栈<strong>使得 accept 阻塞调用返回</strong>，这个时候服务器端到客户端的单向连接也建立成功，服务器端也进入 ESTABLISHED 状态。</li>
+</ol>
+<p>Socket 连接默认时阻塞式调用的。<strong>非阻塞调用的 使用的场景：程序在调用返回之前，需要做其他事情，可以选择用定时===轮询==或==事件通知==的方式获取调用结果</strong></p>
+<p><img src="/home/fizz/.config/Typora/typora-user-images/image-20211125173959104.png" alt="image-20211125173959104"></p>
+
       </div>
-    <div class="archive-post">
-        <span class="archive-post-time">
-          11-27
-          </span>
-        <span class="archive-post-title">
-          <a href="/2021/11/27/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/" class="archive-post-link">
-            网络编程工具
-          </a>
-        </span>
-      </div>
-    <div class="archive-post">
-        <span class="archive-post-time">
-          11-27
-          </span>
-        <span class="archive-post-title">
-          <a href="/2021/11/27/udp/" class="archive-post-link">
-            udp
-          </a>
-        </span>
-      </div>
-    <div class="archive-post">
-        <span class="archive-post-time">
-          11-25
-          </span>
-        <span class="archive-post-title">
-          <a href="/2021/11/25/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B1/" class="archive-post-link">
-            网络编程1
-          </a>
-        </span>
-      </div>
-    <div class="archive-post">
-        <span class="archive-post-time">
-          11-15
-          </span>
-        <span class="archive-post-title">
-          <a href="/2021/11/15/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B2/" class="archive-post-link">
-            网络编程2
-          </a>
-        </span>
-      </div>
-    <div class="archive-post">
-        <span class="archive-post-time">
-          11-13
-          </span>
-        <span class="archive-post-title">
-          <a href="/2021/11/13/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="archive-post-link">
-            网络编程
-          </a>
-        </span>
-      </div>
-    <div class="archive-post">
-        <span class="archive-post-time">
-          11-12
-          </span>
-        <span class="archive-post-title">
-          <a href="/2021/11/12/Tmux%E5%AD%A6%E4%B9%A0/" class="archive-post-link">
-            Tmux学习
-          </a>
-        </span>
-      </div>
-    <div class="archive-post">
-        <span class="archive-post-time">
-          11-11
-          </span>
-        <span class="archive-post-title">
-          <a href="/2021/11/11/vim%E5%AD%A6%E4%B9%A0/" class="archive-post-link">
-            vim学习
-          </a>
-        </span>
-      </div>
-    </section><nav class="pagination"></nav>
-    </section></div></div>
+      
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2021/11/27/udp/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">udp</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2021/11/15/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B2/">
+        <span class="next-text nav-default">网络编程2</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"><div id="gitalk-container"></div>
+    </div></div>
       </main>
 
       <footer id="footer" class="footer"><div class="social-links"><a href="mailto:3413125076@qq.com" class="iconfont icon-email" title="email"></a>
@@ -231,7 +195,30 @@
       <div class="back-to-top" id="back-to-top">
         <i class="iconfont icon-up"></i>
       </div>
-    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+    </div>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css"/>
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'bf4236d537a64303f828',
+    clientSecret: 'bfc9245002bdb0d64676233e852d7176f64662d1',
+    repo: 'gitalk',
+    owner: 'pyj2333',
+    admin: ['pyj2333'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
   <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
