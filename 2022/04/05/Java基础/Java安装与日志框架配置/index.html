@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="Java安装与日志框架配置"/><meta name="keywords" content="程序员" /><link rel="alternate" href="/atom.xml" title="FizzPu" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<meta name="description" content="Linux下Java安装与日志框架配置"/><meta name="keywords" content="程序员" /><link rel="alternate" href="/atom.xml" title="FizzPu" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
 <link rel="canonical" href="http://example.com/2022/04/05/Java基础/Java安装与日志框架配置/"/>
 
 <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
@@ -54,7 +54,7 @@
   window.config = {"leancloud":{"app_id":"nsM8V2SGS5yFvbIMBDvU59ns-gzGzoHsz","app_key":"mT7ruxEfeekIeYpGvLyzrqdy"},"toc":true,"fancybox":true,"pjax":"","latex":true};
 </script>
 
-    <title>Java安装与日志框架配置 - FizzPu</title>
+    <title>Linux下Java安装与日志框架配置 - FizzPu</title>
   <meta name="generator" content="Hexo 5.4.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -123,7 +123,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Java安装与日志框架配置
+      <h1 class="post-title">Linux下Java安装与日志框架配置
         </h1>
 
       <div class="post-meta">
@@ -131,16 +131,103 @@
           2022-04-05
         </span><span class="post-visits"
              data-url="/2022/04/05/Java%E5%9F%BA%E7%A1%80/Java%E5%AE%89%E8%A3%85%E4%B8%8E%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E9%85%8D%E7%BD%AE/"
-             data-title="Java安装与日志框架配置">
+             data-title="Linux下Java安装与日志框架配置">
           Visits 0
         </span>
         </div>
     </header>
 
-    <div class="post-content">
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Jdk8%E7%9A%84%E4%B8%8B%E8%BD%BD"><span class="toc-text">Jdk8的下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">环境变量的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#apache-commons-logging%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">apache.commons.logging的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%97%A5%E5%BF%97%E5%AE%9E%E7%8E%B0"><span class="toc-text">自定义日志实现</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="Jdk8的下载"><a href="#Jdk8的下载" class="headerlink" title="Jdk8的下载"></a>Jdk8的下载</h3><ul>
+<li><ol>
+<li>首先要明确的是jre和jdk的区别，jre是java运行时环境，包含了运行java程序的基本环境如jvm, 核心类库。而jdk是给开发者用的，包含了一些其他的工具，如编译器javac, 监视工具jconsle。jdk里面也包含了jre, 因为javac这些工具是需要jre来运行的。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>oracle jdk商用是要付费的，不过自己学习用平时用没关系的，当然也可以选择open jdk。这里我选择oracle jdk8。链接<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html">https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html</a></li>
+</ol>
+</li>
+<li><ol start="3">
+<li>通过uname -a 查看机器架构后，选择对应的版本即可</li>
+</ol>
+</li>
+</ul>
+<p><img src="/home/fizz/.config/Typora/typora-user-images/image-20220405225459865.png" alt="image-20220405225459865"></p>
+<p><img src="/home/fizz/.config/Typora/typora-user-images/image-20220405225601896.png" alt="image-20220405225601896"></p>
+<ol start="4">
+<li>下载后，将下载的压缩包解压到安装目录即可, 这里我解压到/usr/local/java8目录</li>
+</ol>
+<h3 id="环境变量的配置"><a href="#环境变量的配置" class="headerlink" title="环境变量的配置"></a>环境变量的配置</h3><ul>
+<li><ol>
+<li>这里我把系统变量配置到用户目录下，而不是root用户, 我使用的是.zshrc终端，所有我编辑.zshrc文件。其他终端用户编辑~/.bashrc文件即可。一般不要配置CLASSPATH，会造成一定的污染，我们常常是自己利用java命令时传入。例如java -cp [classpath] Main。</li>
+</ol>
+</li>
+</ul>
+<p><img src="/home/fizz/.config/Typora/typora-user-images/image-20220405230416314.png" alt="image-20220405230416314"></p>
+<ul>
+<li><ol start="2">
+<li>打开终端，执行java -version 查看是否安装成功</li>
+</ol>
+</li>
+</ul>
+<p><img src="/home/fizz/.config/Typora/typora-user-images/image-20220405231017083.png" alt="image-20220405231017083"></p>
+<ul>
+<li><ol start="3">
+<li>有时候我们忘了配置的参数，可以通过以下命令查看</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis java  # 查看java安装目录</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="apache-commons-logging的配置"><a href="#apache-commons-logging的配置" class="headerlink" title="apache.commons.logging的配置"></a>apache.commons.logging的配置</h3><ul>
+<li><p>为啥我想配置这个东西， 原因是我每次新开一个项目，都要为这个项目配置一次日志框架，简直巨恼火。所以这里我为jre添加这个外部依赖，避免每次都去配。这个日志是为所有Java程序日志模块提供的一个接口，编码的时候使用接口，可以根据项目随意切换日志的具体实现。这样我自己写一个日志组件，然后去切换项目中原来的使用即可。</p>
+</li>
+<li><p>去maven仓库下载apache.commons.loggin的jar包后，放到jre的lib目录下。此目录即使不加入classpath, 也是classpath的一部分。</p>
+<p> <img src="/home/fizz/.config/Typora/typora-user-images/image-20220407201806008.png" alt="image-20220407201806008"></p>
+</li>
+<li><p>打开IDEA以后，我们可以在external lib看到这个包的具体信息</p>
+<p> <img src="/home/fizz/.config/Typora/typora-user-images/image-20220407203401412.png" alt="image-20220407203401412"></p>
+</li>
+<li><p>在classpath下寻找自己的配置文件commons-logging.properties，如果找到，则使用其中定义的Log实现类：org.apache.commons.logging.Log=org.apache.commons.logging.impl.SimpleLog; //使用commons-logging的SimpleLog<br> org.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger;//选择使用log4j<br> org.apache.commons.logging.Log=org.apache.commons.logging.impl.Jdk14Logger; //选择jdk的logger</p>
+<p>如果找不到commons-logging.properties文件，则在查找是否已定义系统环境变量org.apache.commons.logging.Log，找到则使用其定义的Log实现类</p>
+<p>否则查看classpath中是否有Log4j的包，如果发现，则自动使用Log4j作为日志实现类。</p>
+<p>否则使用JDK自身的日志实现类（JDK1.4以后才有日志实现类）。</p>
+<p>否则使用commons-logging自己提供的一个简单的日志实现类SimpleLog。<br> 可见，commons-logging总是能找到一个日志实现类，并且尽可能找到一个最合适的日志实现类。<br> 为了简化配置，我们可以不使用commons-logging的配置文件，也不设置commons-logging相关的环境变量，只需将log4j的包放入classpath就可以了，这样就可以完成commons-logging与log4j的结合。如果以后不想使用log4j，只需将log4j的包 从classpath中移除就可以了。</p>
+</li>
+<li><pre><code class="java"> public class LoggingTest &#123;
+     public static void main(String[] args) &#123;
+        Log log = LogFactory.getLog(LoggingTest.class);
+ 
+        if (log.isDebugEnabled()) &#123;
+            log.debug(&quot;debug&quot;);
+        &#125;
+ 
+        if (log.isInfoEnabled()) &#123;
+            log.info(&quot;info&quot;);
+        &#125;
+ 
+        if (log.isErrorEnabled()) &#123;
+            log.error(&quot;error&quot;, new RuntimeException(&quot;test&quot;));
+        &#125;
+     &#125;
+ &#125;
+</code></pre>
+<p> <img src="/home/fizz/.config/Typora/typora-user-images/image-20220407204054636.png" alt="image-20220407204054636"></p>
+</li>
+<li><p>现在我们尝试更换日志框架为log4j 2.0版本, 使用maven我们添加依赖, 失败！！！</p>
+</li>
+</ul>
+<h3 id="自定义日志实现"><a href="#自定义日志实现" class="headerlink" title="自定义日志实现"></a>自定义日志实现</h3><p>平时使用使用接口进行开发，想要添加日志功能时，再引入依赖，然后进行配置。除了这个接口，有人对这个接口不满，又开发了slf4j接口，他的一个实现类是logback。</p>
+<p>这里我们尝试，自定义日志框架，实现apache.commons.logging接口。</p>
+
       </div>
       
       <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
+            </div>
         
         <nav class="post-nav"><a class="prev" href="/2022/04/05/Java%E6%A1%86%E6%9E%B6/mybaits/Mybaits%E4%BA%8B%E5%8A%A1%E6%80%BB%E7%BB%93/">
         <i class="iconfont icon-left"></i>
